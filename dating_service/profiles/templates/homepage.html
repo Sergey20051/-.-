@@ -1,0 +1,104 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сайт Знакомств</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: url('{% static "background.png" %}') no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Arial', sans-serif;
+            color: #fff;
+        }
+
+        header {
+            text-align: center;
+            padding: 100px 20px;
+            background-color: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(10px);
+            border-bottom: 5px solid rgba(255, 0, 0, 0.7);
+        }
+
+        h1 {
+            font-size: 4em;
+            margin: 0;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        p {
+            font-size: 1.8em;
+            margin: 20px 0;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .button-container {
+            margin: 30px 0;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            margin: 10px;
+            background-color: rgba(255, 0, 0, 0.9);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            font-size: 1.2em;
+            position: relative;
+        }
+
+        .btn:hover {
+            background-color: rgba(255, 0, 0, 1);
+            transform: translateY(-3px);
+        }
+
+        .btn:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+            z-index: 0;
+        }
+
+        .btn:hover:after {
+            transform: scaleX(1);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Добро пожаловать на сайт знакомств!</h1>
+        <p>Это главная страница вашего сервиса знакомств.</p>
+        <div class="button-container">
+            <a href="{% url 'profile' %}" class="btn">Перейти в профиль</a>
+            <a href="{% url 'edit_profile' %}" class="btn">Редактировать профиль</a>
+            <a href="{% url 'some_other_view' %}" class="btn">Другие функции</a>
+        </div>
+    </header>
+</body>
+</html>
+
